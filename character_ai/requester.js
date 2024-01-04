@@ -16,6 +16,16 @@ class Requester {
         return this.#initialized;
     }
 
+    async uninitialize() {
+        if (this.browser) {
+          await this.browser.close();
+          console.log('Browser closed.'); // this serves as a convenient function to close the stuff cause the process won't close if the browser process is running
+          this.browser = null;
+        } else {
+          console.log('Browser is not launched.');
+        }
+    }
+
     async initialize() {
         if (!this.isInitialized());
 
